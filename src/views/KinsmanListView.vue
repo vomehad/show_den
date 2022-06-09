@@ -1,8 +1,8 @@
 <template>
   <div class="" v-for="(kinsman, index) in list">
     <div class="box">
-      <RouterLink to="/show">
-        <img class="rounded-circle" alt="{{ kinsman.name }}">
+      <RouterLink :to="{ path: '/show/' + index }" >
+        <img class="rounded-circle" :src="getPhoto(kinsman)" :alt="kinsman.full_name">
       </RouterLink>
       <h3 class="name">{{ fullName(kinsman) }}</h3>
     </div>
@@ -29,7 +29,10 @@ export default {
         middle_name: '',
         mother_id: Number,
         name: '',
-        updated_at: ''
+        updated_at: '',
+        photo: {
+          url: ''
+        }
       }]
     };
   },
@@ -50,11 +53,28 @@ export default {
     },
     fullName(item) {
       return item.name + ' ' + item.middle_name;
+    },
+    getPhoto(kinsman) {
+      if (kinsman.photo !== null) {
+        return kinsman.photo?.url;
+      }
+
+      if (kinsman.gender === 'Мужской') {
+        return 'http://localhost/storage/img/man.jpg';
+      }
+
+      if (kinsman.gender === 'Женский') {
+        return 'http://localhost/storage/img/woman.jpg';
+      }
+
+      return null;
     }
   }
 }
 </script>
 
 <style scoped>
-
+  img {
+    max-height: 100px;
+  }
 </style>

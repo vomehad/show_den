@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import KinsmansView from '../views/KinsmansView.vue';
+import KinsmanListView from '../views/KinsmanListView.vue';
 import KinsmanView from '../views/KinsmanView.vue';
 
 const router = createRouter({
@@ -22,10 +22,10 @@ const router = createRouter({
     {
       path: '/kinsmans',
       name: 'kinsmans',
-      component: KinsmansView
+      component: KinsmanListView
     },
     {
-      path: '/show',
+      path: '/show/:id',
       name: 'kinsman',
       component: KinsmanView
     }
