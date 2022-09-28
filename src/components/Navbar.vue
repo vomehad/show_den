@@ -11,6 +11,9 @@
       <v-btn outlined class="ml-3">
         <router-link to="/photo">Photos</router-link>
       </v-btn>
+      <v-btn outlined class="ml-3">
+        <router-link to="/kinsman">Kinsmans</router-link>
+      </v-btn>
 
     </v-app-bar>
   </v-container>
