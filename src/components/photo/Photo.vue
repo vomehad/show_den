@@ -1,7 +1,7 @@
 <template>
 
     <v-col cols="4">
-      <v-card>
+      <v-card @click="openPhoto">
         <v-card-title>{{ photo.title }}</v-card-title>
         <v-card-text>
           <v-img
@@ -19,9 +19,12 @@
 export default {
   name: "Photo",
   props: {
-    photo: {
-      type: Object,
-      required: true
+    photo: {}
+  },
+  methods: {
+    openPhoto() {
+      this.$store.commit('setCurrentPhoto', this.photo);
+      this.$store.commit('showDialog');
     }
   }
 }

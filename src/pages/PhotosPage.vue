@@ -1,39 +1,38 @@
 <template>
   <v-container>
+    <PhotoForm @addPhoto="addPhoto" />
     <v-row>
       <Photo
-          v-for="(photo, key) in photos"
+          v-for="(photo, key) in $store.getters.getAllPhotos"
           :photo="photo"
           :key="key"
       />
     </v-row>
+    <PhotoDialog/>
   </v-container>
 </template>
 
 <script>
 import Photo from "../components/photo/Photo";
+import PhotoForm from "../components/photo/PhotoForm";
+import PhotoDialog from "../components/photo/PhotoDialog";
 
 export default {
   name: "PhotosPage",
   components: {
-    Photo
+    Photo, PhotoForm, PhotoDialog
   },
   data: () => ({
-    photos: []
+    photos: [],
   }),
   mounted() {
-     this.getImages();
+    this.$store.dispatch('fetchPhotos');
   },
   methods: {
-    async getImages() {
-      try {
-        const response = await this.axios.get('https://jsonplaceholder.typicode.com/photos?_limit=10')
-        console.log(response);
-        this.photos = response.data
-      } catch (e) {
-        console.log(e)
-      }
-    }
+    addPhoto(photo) {
+      // @TODO save photo
+      this.photos.push(photo);
+    },
   }
 }
 </script>
