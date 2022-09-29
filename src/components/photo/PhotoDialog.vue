@@ -2,7 +2,7 @@
   <v-dialog
       v-model="$store.getters.getDialogVisible"
       max-width="800"
-      @click:outside="$store.commit('hideDialog')"
+      @click:outside="hideDialog()"
   >
     <v-card>
       <v-card-title>{{ full_title }}</v-card-title>
@@ -16,12 +16,21 @@
 </template>
 
 <script>
+import {mapGetters, mapMutations} from "vuex";
+
 export default {
   name: "PhotoDialog",
+  data: () => ({
+    visible: Boolean,
+  }),
   computed: {
     full_title() {
-      return `name - ${this.$store.getters.getCurrentPhoto.title}`;
+      return `name - ${this.getCurrentPhoto().title}`;
     }
+  },
+  methods: {
+    ...mapGetters(['getCurrentPhoto', 'getDialogVisible']),
+    ...mapMutations(['hideDialog']),
   }
 }
 </script>

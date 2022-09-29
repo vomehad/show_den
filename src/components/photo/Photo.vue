@@ -16,15 +16,18 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex';
+
 export default {
   name: "Photo",
   props: {
     photo: {}
   },
   methods: {
+    ...mapMutations(['setCurrentPhoto', 'showDialog']),
     openPhoto() {
-      this.$store.commit('setCurrentPhoto', this.photo);
-      this.$store.commit('showDialog');
+      this.setCurrentPhoto(this.photo);
+      this.showDialog();
     }
   }
 }
