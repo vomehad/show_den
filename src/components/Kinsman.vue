@@ -1,5 +1,4 @@
 <template>
-
     <v-col cols="4">
       <v-card
           class="mx-auto"
@@ -34,8 +33,33 @@
         <v-expand-transition>
           <div v-show="show">
             <v-divider></v-divider>
-
-            <v-card-text>{{ kinsman }}</v-card-text>
+            <v-row>
+              <v-col cols="6"
+                     class="mx-auto"
+                     max-width="172"
+              >
+                <v-card>
+                  <v-img
+                      src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+                      height="100px"
+                  />
+                  <v-card-title>{{ `${kinsman.father.name} ${kinsman.father.middle_name}` }}</v-card-title>
+                  <v-card-subtitle>{{ kinsman.father.kin.name }}</v-card-subtitle>
+                  <v-card-subtitle>{{ kinsman.father.life.birth_date }}</v-card-subtitle>
+                </v-card>
+              </v-col>
+              <v-col cols="6">
+                <v-card>
+                  <v-img
+                      src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+                      height="100px"
+                  />
+                  <v-card-title>{{ `${kinsman.mother.name} ${kinsman.mother.middle_name}` }}</v-card-title>
+                  <v-card-subtitle>{{ kinsman.mother.kin.name }}</v-card-subtitle>
+                  <v-card-subtitle>{{ kinsman.mother.life.birth_date }}</v-card-subtitle>
+                </v-card>
+              </v-col>
+            </v-row>
           </div>
         </v-expand-transition>
       </v-card>
@@ -56,8 +80,34 @@ export default {
         id: Number,
         name: '',
       },
-      father: '',
-      mother: '',
+      father: {
+        id: Number,
+        name: '',
+        middle_name: '',
+        kin: {
+          id: Number,
+          name: '',
+          slug: '',
+        },
+        life: {
+          id: Number,
+          birth_date: '',
+        }
+      },
+      mother: {
+        id: Number,
+        name: '',
+        middle_name: '',
+        kin: {
+          id: Number,
+          name: '',
+          slug: '',
+        },
+        life: {
+          id: Number,
+          birth_date: '',
+        }
+      },
       life: {
         id: Number,
         birth_date: String,
