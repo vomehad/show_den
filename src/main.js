@@ -5,7 +5,9 @@ import router from "./router";
 import axios from "axios";
 import store from "./store/index";
 
-export const API_URL = 'http://localhost/api/v1/';
+console.log(process.env.VUE_APP_API_URL);
+// export const API_URL = 'http://localhost/api/v1/';
+export const API_URL = process.env.VUE_APP_API_URL;
 
 Vue.config.productionTip = false
 Vue.prototype.axios = axios;
