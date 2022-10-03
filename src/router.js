@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import MainPage from './pages/MainPage';
 import PhotosPage from './pages/PhotosPage';
 import KinsmansPage from "./pages/KinsmansPage";
+import YaTokenPage from "./components/yandex/YaTokenPage";
 Vue.use(VueRouter);
 
 const routes = [
@@ -17,6 +18,10 @@ const routes = [
     {
         path: '/kinsman',
         component: KinsmansPage,
+    },
+    {
+        path: '/ya_token',
+        component: YaTokenPage,
     },
 ];
 

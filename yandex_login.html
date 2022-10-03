@@ -1,0 +1,1070 @@
+<!doctype html>
+<html class="is-js_no" data-page-type="react.authv2" dir="ltr" lang="ru">
+<head><title>Авторизация</title>
+    <meta charSet="utf-8"/>
+    <meta content="IE=EmulateIE7,IE=edge" http-equiv="X-UA-Compatible"/>
+    <link as="style" href="https://yastatic.net/s3/passport-static/core/v1.51.3/css/react.authv2.cij.css"
+          rel="preload"/>
+    <link as="script" crossorigin="anonymous" href="//yastatic.net/react/16.8.4/react-with-dom-and-polyfills.min.js"
+          rel="preload"/>
+    <link as="script" crossorigin="anonymous" href="https://yastatic.net/jquery/2.1.4/jquery.min.js" rel="preload"/>
+    <link href="/favicon.ico" rel="shortcut icon"/>
+    <meta content="disable" name="pdb"/>
+    <meta content="disable" name="collections"/>
+    <link href="https://yastatic.net/s3/passport-static/core/v1.51.3/css/react.authv2.cij.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="https://yastatic.net/s3/passport-auth-customs//customs/v1.28.2/passport.auth.customs.css" rel="stylesheet"
+          type="text/css"/>
+    <script nonce="dd5b8868-af55-4152-8918-8648a8830c90" type="text/javascript">(function (d, e, c, r, n, w, v, f) {
+        e = d.documentElement;
+        c = "className";
+        r = "replace";
+        n = "createElementNS";
+        f = "firstChild";
+        w = "http://www.w3.org/2000/svg";
+        v = d.createElement("div");
+        v.innerHTML = "<svg/>";
+        e[c] = e[c][r]("is-js_no", "is-js_yes");
+        e[c] += " is-inlinesvg_" + ((v[f] && v[f].namespaceURI) === w ? "yes" : "no");
+    })(document);</script>
+    <script nonce="dd5b8868-af55-4152-8918-8648a8830c90"
+            type="text/javascript">window.onerror = function (d, e, f, g, b) {
+        var h = new Image, a = ["app=passport"], c = "";
+        d && a.push("msg=" + encodeURIComponent(d));
+        e && a.push("url=" + encodeURIComponent(e));
+        (f || g) && a.push("position=" + encodeURIComponent(f + ":" + g));
+        if (b) {
+            try {
+                c = JSON.stringify(b, Object.getOwnPropertyNames(b))
+            } catch (k) {
+                c = b.stack
+            }
+            a.push("error_object=" + encodeURIComponent(c))
+        }
+        h.src = "/monitoring/onerror?" + a.join("&");
+        return !1
+    };</script>
+    <script nonce="dd5b8868-af55-4152-8918-8648a8830c90" type="text/javascript">!function (i, t) {
+        if (i.Ya = i.Ya || {}, Ya.Rum) throw new Error("Rum: interface is already defined");
+        var n = i.performance, e = n && n.timing && n.timing.navigationStart || Ya.startPageLoad || +new Date,
+            s = i.requestAnimationFrame;
+        Ya.Rum = {
+            enabled: !!n,
+            vsStart: document.visibilityState,
+            vsChanged: !1,
+            _defTimes: [],
+            _defRes: [],
+            _deltaMarks: {},
+            _markListeners: {},
+            _settings: {},
+            _vars: {},
+            init: function (i, t) {
+                this._settings = i, this._vars = t
+            },
+            getTime: n && n.now ? function () {
+                return n.now()
+            } : Date.now ? function () {
+                return Date.now() - e
+            } : function () {
+                return new Date - e
+            },
+            time: function (i) {
+                this._deltaMarks[i] = [this.getTime()]
+            },
+            timeEnd: function (i, t) {
+                var n = this._deltaMarks[i];
+                n && 0 !== n.length && n.push(this.getTime(), t)
+            },
+            sendTimeMark: function (i, t, n, e) {
+                void 0 === t && (t = this.getTime()), this._defTimes.push([i, t, e]), this.mark(i, t)
+            },
+            sendResTiming: function (i, t) {
+                this._defRes.push([i, t])
+            },
+            sendRaf: function (i) {
+                var t = this.getSetting("forceFirstPaintTimeSending");
+                if (s && (t || !this.isVisibilityChanged())) {
+                    var n = this, e = "2616." + i;
+                    s(function () {
+                        !t && n.isVisibilityChanged() || (n.sendTimeMark(e + ".205"), s(function () {
+                            !t && n.isVisibilityChanged() || n.sendTimeMark(e + ".1928")
+                        }))
+                    })
+                }
+            },
+            isVisibilityChanged: function () {
+                return this.vsStart && ("visible" !== this.vsStart || this.vsChanged)
+            },
+            mark: n && n.mark ? function (i, t) {
+                n.mark(i + (t ? ": " + t : ""))
+            } : function () {
+            },
+            getSetting: function (i) {
+                var t = this._settings[i];
+                return null === t ? null : t || ""
+            },
+            on: function (i, t) {
+                "function" == typeof t && (this._markListeners[i] = this._markListeners[i] || []).push(t)
+            },
+            sendTrafficData: function () {
+            },
+            finalizeLayoutShiftScore: function () {
+            },
+            finalizeLargestContentfulPaint: function () {
+            }
+        }, document.addEventListener && document.addEventListener("visibilitychange", function i() {
+            Ya.Rum.vsChanged = !0, document.removeEventListener("visibilitychange", i)
+        })
+    }(window);
+    !function () {
+        "use strict";
+        Ya.Rum.observeDOMNode = window.IntersectionObserver ? function (e, i, n) {
+            var t = this, r = Ya.Rum.getSetting("forceFirstPaintTimeSending");
+            !function s() {
+                if (r || !t.isVisibilityChanged()) {
+                    var o = "string" == typeof i ? document.querySelector(i) : i;
+                    o ? new IntersectionObserver(function (i, n) {
+                        !r && t.isVisibilityChanged() || (Ya.Rum.sendTimeMark(e), n.unobserve(o))
+                    }, n).observe(o) : setTimeout(s, 100)
+                }
+            }()
+        } : function () {
+        }
+    }();
+    !function () {
+        "use strict";
+        if (window.PerformanceLongTaskTiming) {
+            var e = Ya.Rum._tti = {
+                events: [], observer: new PerformanceObserver(function (n) {
+                    var t = n.getEntries();
+                    e.events = e.events.concat(t), e.events.length > 300 && (e.events = e.events.slice(e.events.length - 300))
+                })
+            };
+            e.observer.observe({entryTypes: ["longtask"]})
+        }
+    }();
+    !function () {
+        "use strict";
+        var e, t = [];
+
+        function n() {
+            var n = Ya.Rum.getSetting("clck"), i = t.join("\r\n");
+            if (t = [], e = null, n && !(navigator.sendBeacon && Ya.Rum.getSetting("beacon") && navigator.sendBeacon(n, i))) {
+                var a = new XMLHttpRequest;
+                a.open("POST", n), a.send(i)
+            }
+        }
+
+        Ya.Rum.send = function (i, a, o, s, r, u, g) {
+            clearTimeout(e);
+            var c = function (e, t, n, i, a, o) {
+                var s = Ya.Rum.getSetting("slots"), r = Ya.Rum.getSetting("experiments");
+                return [o ? "/" + o.join("/") : "", t ? "/path=" + t : "", i ? "/events=" + i : "", s ? "/slots=" + s.join(";") : "", r ? "/experiments=" + r.join(";") : "", n ? "/vars=" + n : "", "/cts=" + (new Date).getTime(), "/*"]
+            }(0, a, o, r, 0, g);
+            t.push("/reqid=" + Ya.Rum.getSetting("reqid") + c.join("")), t.length < 42 ? e = setTimeout(n, 15) : n()
+        }
+    }();
+    !function (n) {
+        if (!n.Ya || !Ya.Rum) throw new Error("Rum: interface is not defined");
+        var e = Ya.Rum;
+        e.getSetting = function (n) {
+            var t = e._settings[n];
+            return null === t ? null : t || ""
+        }
+    }("undefined" != typeof self ? self : window);
+    !function (e, r) {
+        var n = {
+            client: ["690.2354", 1e3, 100, 0],
+            uncaught: ["690.2361", 100, 10, 0],
+            external: ["690.2854", 100, 10, 0],
+            script: ["690.2609", 100, 10, 0]
+        }, t = {};
+        r.ERROR_LEVEL = {
+            INFO: "info",
+            DEBUG: "debug",
+            WARN: "warn",
+            ERROR: "error",
+            FATAL: "fatal"
+        }, r._errorSettings = {
+            clck: "https://yandex.ru/clck/click",
+            beacon: !0,
+            project: "unknown",
+            page: "",
+            env: "",
+            experiments: [],
+            additional: {},
+            platform: "",
+            region: "",
+            dc: "",
+            service: "",
+            level: "",
+            version: "",
+            yandexuid: "",
+            coordinates_gp: "",
+            referrer: "",
+            preventError: !1,
+            unhandledRejection: !1,
+            uncaughtException: !0,
+            debug: !1,
+            limits: {},
+            silent: {},
+            filters: {},
+            pageMaxAge: 864e6,
+            initTimestamp: +new Date
+        };
+        var o = !1;
+
+        function a(e, r) {
+            for (var n in r) r.hasOwnProperty(n) && (e[n] = r[n]);
+            return e
+        }
+
+        function i(e) {
+            return "boolean" == typeof e && (e = +e), "number" == typeof e ? e + "" : null
+        }
+
+        r.initErrors = function (n) {
+            a(r._errorSettings, n), !o && r._errorSettings.uncaughtException && (function () {
+                if (e.addEventListener) e.addEventListener("error", s), "Promise" in e && r._errorSettings.unhandledRejection && e.addEventListener("unhandledrejection", function (e) {
+                    var r, n = e.reason, t = {};
+                    n && (n.stack && n.message ? r = n.message : "[object Event]" === (r = String(n)) ? r = "event.type: " + n.type : "[object Object]" === r && (t.unhandledObject = n), n.target && n.target.src && (t.src = n.target.src), s({
+                        message: "Unhandled rejection: " + r,
+                        stack: n.stack,
+                        additional: t
+                    }))
+                }); else {
+                    var n = e.onerror;
+                    e.onerror = function (e, r, t, o, a) {
+                        s({
+                            error: a || new Error(e || "Empty error"),
+                            message: e,
+                            lineno: t,
+                            colno: o,
+                            filename: r
+                        }), n && n.apply(this, arguments)
+                    }
+                }
+            }(), o = !0)
+        }, r.updateErrors = function (e) {
+            a(r._errorSettings, e)
+        }, r._handleError = function (e, o) {
+            var a, i, s = r._errorSettings;
+            if (s.preventError && e.preventDefault && e.preventDefault(), o) a = e, i = "client"; else {
+                a = r._normalizeError(e), i = a.type;
+                var l = s.onError;
+                "function" == typeof l && l(a);
+                var c = s.transform;
+                "function" == typeof c && (a = c(a))
+            }
+            var u = +new Date, d = s.initTimestamp, p = s.pageMaxAge;
+            if (!(-1 !== p && d && d + p < u)) {
+                var m = n[i][1];
+                "number" == typeof s.limits[i] && (m = s.limits[i]);
+                var f = n[i][2];
+                "number" == typeof s.silent[i] && (f = s.silent[i]);
+                var g = n[i][3];
+                if (g < m || -1 === m) {
+                    a.path = n[i][0];
+                    var v = r._getErrorData(a, {silent: g < f || -1 === f ? "no" : "yes", isCustom: Boolean(o)}, s),
+                        E = function (e) {
+                            t[a.message] = !1, r._sendError(e.path, e.vars), n[i][3]++
+                        }.bind(this, v);
+                    if (void 0 === s.throttleSend) E(); else {
+                        if (t[a.message]) return;
+                        t[a.message] = !0, setTimeout(E, s.throttleSend)
+                    }
+                }
+            }
+        }, r._getErrorData = function (r, n, t) {
+            n = n || {};
+            var o = "";
+            try {
+                var s = a(a({}, t.additional), r.additional);
+                0 !== Object.keys(s).length && (o = JSON.stringify(s))
+            } catch (r) {
+                t.debug && e.console && console.error("[error-counter] json.stringify:", r)
+            }
+            var l = t.experiments instanceof Array ? t.experiments.join(";") : "", c = {
+                "-stack": r.stack,
+                "-url": r.file,
+                "-line": r.line,
+                "-col": r.col,
+                "-block": r.block,
+                "-method": r.method,
+                "-msg": r.message,
+                "-env": t.env,
+                "-external": r.external,
+                "-externalCustom": r.externalCustom,
+                "-project": t.project,
+                "-service": r.service || t.service,
+                "-page": r.page || t.page,
+                "-platform": t.platform,
+                "-level": r.level,
+                "-experiments": l,
+                "-version": t.version,
+                "-region": t.region,
+                "-dc": t.dc,
+                "-yandexuid": t.yandexuid,
+                "-coordinates_gp": r.coordinates_gp || t.coordinates_gp,
+                "-referrer": t.referrer,
+                "-source": r.source,
+                "-sourceMethod": r.sourceMethod,
+                "-type": n.isCustom ? r.type : "",
+                "-additional": o,
+                "-adb": i(Ya.blocker) || i(t.blocker),
+                "-cdn": e.YaStaticRegion,
+                "-ua": navigator.userAgent,
+                "-silent": n.silent,
+                "-ts": +new Date,
+                "-init-ts": t.initTimestamp
+            };
+            return t.debug && e.console && console[console[r.level] ? r.level : "error"]("[error-counter] " + r.message, c, r.stack), {
+                path: r.path,
+                vars: c
+            }
+        }, r._baseNormalizeError = function (e) {
+            var r = (e = e || {}).filename || e.fileName || "", n = e.error && e.error.stack || e.stack || "",
+                t = e.message || "";
+            return {
+                file: r,
+                line: e.lineno || e.lineNumber,
+                col: e.colno || e.colNumber,
+                stack: n,
+                message: t,
+                additional: e.additional
+            }
+        }, r._normalizeError = function (e) {
+            var n = r._baseNormalizeError(e), t = "uncaught", o = r._isExternalError(n.file, n.message, n.stack),
+                a = "", i = "";
+            return o.hasExternal ? (t = "external", a = o.common, i = o.custom) : /^Script error\.?$/.test(n.message) && (t = "script"), n.external = a, n.externalCustom = i, n.type = t, n
+        }, r._sendError = function (e, n) {
+            r.send(null, e, function (e) {
+                var r = [];
+                for (var n in e) e.hasOwnProperty(n) && (e[n] || 0 === e[n]) && r.push(n + "=" + encodeURIComponent(e[n]).replace(/\*/g, "%2A"));
+                return r.join(",")
+            }(n), null, null, null, null)
+        };
+        var s = function (e) {
+            r._handleError(e, !1)
+        }
+    }("undefined" != typeof self ? self : window, Ya.Rum);
+    !function (e) {
+        var r = {
+            url: {
+                0: /(miscellaneous|extension)_bindings/,
+                1: /^chrome:/,
+                2: /kaspersky-labs\.com\//,
+                3: /^(?:moz|chrome)-extension:\/\//,
+                4: /^file:/,
+                5: /^resource:\/\//,
+                6: /webnetc\.top/,
+                7: /local\.adguard\.com/
+            },
+            message: {
+                0: /__adgRemoveDirect/,
+                1: /Content Security Policy/,
+                2: /vid_mate_check/,
+                3: /ucapi/,
+                4: /Access is denied/i,
+                5: /^Uncaught SecurityError/i,
+                6: /__ybro/,
+                7: /__show__deepen/,
+                8: /ntp is not defined/,
+                9: /Cannot set property 'install' of undefined/,
+                10: /NS_ERROR/,
+                11: /Error loading script/,
+                12: /^TypeError: undefined is not a function$/,
+                13: /__firefox__\.(?:favicons|metadata|reader|searchQueryForField|searchLoginField)/
+            },
+            stack: {0: /(?:moz|chrome)-extension:\/\//, 1: /adguard.*\.user\.js/i}
+        };
+
+        function n(e, r) {
+            if (e && r) {
+                var n = [];
+                for (var o in r) if (r.hasOwnProperty(o)) {
+                    var i = r[o];
+                    "string" == typeof i && (i = new RegExp(i)), i instanceof RegExp && i.test(e) && n.push(o)
+                }
+                return n.join("_")
+            }
+        }
+
+        function o(e, o) {
+            var i, t = [];
+            for (var s in r) r.hasOwnProperty(s) && (i = n(e[s], o[s])) && t.push(s + "~" + i);
+            return t.join(";")
+        }
+
+        e._isExternalError = function (n, i, t) {
+            var s = e._errorSettings.filters || {},
+                a = {url: (n || "") + "", message: (i || "") + "", stack: (t || "") + ""}, c = o(a, r), u = o(a, s);
+            return {common: c, custom: u, hasExternal: !(!c && !u)}
+        }
+    }(Ya.Rum);
+    Ya.Rum.initErrors({
+        "slots": ["637803,0,-1", "637802,0,-1", "637801,0,-1", "637799,0,-1", "637798,0,-1", "637797,0,-1", "637794,0,-1", "637792,0,-1", "637790,0,-1", "596989,0,61", "549995,0,13", "225725,0,96", "307868,0,24", "127242,0,44", "118435,0,28", "252173,0,49", "639092,0,25"],
+        "reqid": "30711ac2d3477c89d5caccc6e85a048d",
+        "project": "passport",
+        "page": "\u002Fauth",
+        "env": "production",
+        "platform": "desktop",
+        "version": "1.51.3",
+        "region": 35,
+        "yandexuid": "",
+        "referrer": "",
+        "experiments": "passport-new-navigation-for-staff-exp;use-new-suggest-by-phone;domik-neophonish-exp-enable;auth-toggle-login-phone-exp;social-provider-fb-exp;show-cards-list-alert;passport-gdpr-enabled;chaas-3ds-one-step-exp;passport-bonuscards-exp;profile-family-pay-drive-exp;profile-family-pay-travel-exp;profile-family-pay-games-exp;profile-family-invite-new;profile-family-pay-3ds-exp;profile-family-pay-exp;chaas-one-step-exp;customs-exp-kinopoisk;show_landing_link_exp;id-layout-plus-balance-exp;support-window-enable;id-layout-exp;password-pwned-exp;id-bnpl-alert-exp;passport-security-tips-exp;passport-security-alert-exp;child-profile-reg-on;order_history_on;passport-subs-praktikum-on;passport-family-smartoffer-on;plus-podpiska-eball-exp;plus-podpiska-downgrade-toggle;plus-coil-enable;plus-winback-restore;sms-auth-on;domik-new_reg-exp3;plus-redesign-enable;plus-family-uz-enable;show-subscriptions;domik-challenge-am-exp;profile-data-lavka-exp;social-force-upgrade;chaas-3ds-new-payment-form;exp-registration-no-phone-link-no-origin;profile-family-alert-first-case;profile-family-alert;profile-phones-v2-exp;customs-exp-registration-no-phone-link-for-direct;customs-exp-registration-no-phone-link-for-mail;passport-authreg-fingerprint-exp;passport-registration-fingerprint-exp;passport-greed-exp;family-promo-exp;slider-confirmation-design;auth_params_exp;auth-check-data-exp;card_deletion_alert_exp;big_input_exp;code-format-by-3-dash;settings-nopassword-on-new;reg_wave_exp;passport-subs-eula-check-on;oauth-authorize-redesign-exp;passport-new-logo-on;profile-verification-enable;publicid-profile-on;PASSP-27563-plus-unsubscribe-new;domik-neophonish-exp-enable;domik-phone-autostart-on;regwithsocialbtn-exp2;settings-nopassword-on;qr_promo_2;PLUS-93-restore-subscription-exp;passp-20231-forced-zvonok;qr_exp;profilepublic-ava-exp;restorelogin_call_dictcall;domik-new-design-soccolor;domik-new-design-exp;domik-new-design-logo;rounded-input-exp;passport-new-lk-exp;passport-app-fingerprint-disable;profile-data-taxi-exp;profile-family-pay-tanker-exp;desktop-test-flag;passport-new-navigation-exp;passport-new-navigation-exp-toggle;force-yaru-sso;yandex-to-ya-exp;add-yakey-account;turn_sso_on=1;new_flow_second=1;big_account_list=1;turn_superlite_reg_on=1;lite_reg_query_name=1;lite_reg_query_password=1;turn_auth_by_sms_code_on=1;turn_neophonish_reg_on=1;scopes_screen_new_design=1;web_login_on=1;web_am_on=1;new-auth-verify-design;customs-exp-registration-no-phone-link-on-morda;oldregistration-nophone;oauth-authorize-controls-top-exp;PASSP-22594_exp;PLUS-215-etalon;passport-security-v2-exp",
+        "preventError": false,
+        "unhandledRejection": true,
+        "uncaughtException": true,
+        "debug": false,
+        "initTimestamp": 1664550490100
+    });
+    Ya.Rum.init({
+        "beacon": true,
+        "clck": "https:\u002F\u002Fyandex.ru\u002Fclck\u002Fclick",
+        "slots": ["637803,0,-1", "637802,0,-1", "637801,0,-1", "637799,0,-1", "637798,0,-1", "637797,0,-1", "637794,0,-1", "637792,0,-1", "637790,0,-1", "596989,0,61", "549995,0,13", "225725,0,96", "307868,0,24", "127242,0,44", "118435,0,28", "252173,0,49", "639092,0,25"],
+        "reqid": "30711ac2d3477c89d5caccc6e85a048d"
+    }, {
+        "region": 35,
+        "rum_id": "ru.passport.auth",
+        "-project": "passport",
+        "-page": "\u002Fauth",
+        "-env": "production",
+        "-platform": "desktop",
+        "-version": "1.51.3",
+        "experiments": "passport-new-navigation-for-staff-exp;use-new-suggest-by-phone;domik-neophonish-exp-enable;auth-toggle-login-phone-exp;social-provider-fb-exp;show-cards-list-alert;passport-gdpr-enabled;chaas-3ds-one-step-exp;passport-bonuscards-exp;profile-family-pay-drive-exp;profile-family-pay-travel-exp;profile-family-pay-games-exp;profile-family-invite-new;profile-family-pay-3ds-exp;profile-family-pay-exp;chaas-one-step-exp;customs-exp-kinopoisk;show_landing_link_exp;id-layout-plus-balance-exp;support-window-enable;id-layout-exp;password-pwned-exp;id-bnpl-alert-exp;passport-security-tips-exp;passport-security-alert-exp;child-profile-reg-on;order_history_on;passport-subs-praktikum-on;passport-family-smartoffer-on;plus-podpiska-eball-exp;plus-podpiska-downgrade-toggle;plus-coil-enable;plus-winback-restore;sms-auth-on;domik-new_reg-exp3;plus-redesign-enable;plus-family-uz-enable;show-subscriptions;domik-challenge-am-exp;profile-data-lavka-exp;social-force-upgrade;chaas-3ds-new-payment-form;exp-registration-no-phone-link-no-origin;profile-family-alert-first-case;profile-family-alert;profile-phones-v2-exp;customs-exp-registration-no-phone-link-for-direct;customs-exp-registration-no-phone-link-for-mail;passport-authreg-fingerprint-exp;passport-registration-fingerprint-exp;passport-greed-exp;family-promo-exp;slider-confirmation-design;auth_params_exp;auth-check-data-exp;card_deletion_alert_exp;big_input_exp;code-format-by-3-dash;settings-nopassword-on-new;reg_wave_exp;passport-subs-eula-check-on;oauth-authorize-redesign-exp;passport-new-logo-on;profile-verification-enable;publicid-profile-on;PASSP-27563-plus-unsubscribe-new;domik-neophonish-exp-enable;domik-phone-autostart-on;regwithsocialbtn-exp2;settings-nopassword-on;qr_promo_2;PLUS-93-restore-subscription-exp;passp-20231-forced-zvonok;qr_exp;profilepublic-ava-exp;restorelogin_call_dictcall;domik-new-design-soccolor;domik-new-design-exp;domik-new-design-logo;rounded-input-exp;passport-new-lk-exp;passport-app-fingerprint-disable;profile-data-taxi-exp;profile-family-pay-tanker-exp;desktop-test-flag;passport-new-navigation-exp;passport-new-navigation-exp-toggle;force-yaru-sso;yandex-to-ya-exp;add-yakey-account;turn_sso_on=1;new_flow_second=1;big_account_list=1;turn_superlite_reg_on=1;lite_reg_query_name=1;lite_reg_query_password=1;turn_auth_by_sms_code_on=1;turn_neophonish_reg_on=1;scopes_screen_new_design=1;web_login_on=1;web_am_on=1;new-auth-verify-design;customs-exp-registration-no-phone-link-on-morda;oldregistration-nophone;oauth-authorize-controls-top-exp;PASSP-22594_exp;PLUS-215-etalon;passport-security-v2-exp"
+    });
+    Ya.Rum.observeDOMNode('2876', '.layout');</script>
+    <script crossorigin="anonymous" src="https://yastatic.net/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body class="Theme_color_yandex-default Theme_root_passport Theme_auth_domik Theme_root_default "
+      data-metrics-id="784657" data-origin="oauth" data-user-type="null" data-version="1.51.3">
+<div id="root" class="layout">
+    <div class="passp-flex-wrapper">
+        <div class="NoJS NoJS_isFloat">
+            <div class="NoJS-message">
+                <div class="NoJS-title">Необходимо включить JavaScript</div>
+                Для корректной работы этого сайта<a class="Link Link_view_default"
+                                                    data-t="link:default"
+                                                    href="https://yandex.ru/support/common/browsers-settings/browsers-java-js-settings.xml" target="_blank"> <!-- -->включите
+                JavaScript<!-- --> .</a></div>
+        </div>
+        <div class="passp-page">
+            <div class="passp-bg passp-bg_1"></div>
+            <div class="passp-flex-wrapper">
+                <div class="passp-content">
+                    <div class="passp-auth">
+                        <div class="passp-page-overlay"></div>
+                        <div class="passp-auth-content">
+                            <div class="Header">
+                                <div class="Header-yaLogoBlock"><a aria-label="Яндекс" class="Logo Logo_ya"
+                                                                   href="https://ya.ru" tabindex="-1"></a></div>
+                            </div>
+                            <div class="passp-page-visibility"></div>
+                            <div class="">
+                                <div class="passp-route">
+                                    <div class="passp-auth-screen passp-add-account-page" data-t="page:add-account">
+                                        <div class="passp-add-account-page_has-social-block"><h1 class="passp-title"
+                                                                                                 data-t="title">
+                                            <span class="passp-add-account-page-title">Войдите с Яндекс ID</span></h1>
+                                            <div class="passp-login-form">
+                                                <form action="https://passport.yandex.ru/auth?origin=oauth&amp;retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df"
+                                                      method="post">
+                                                    <input name="retpath" type="hidden"
+                                                           value="https://oauth.yandex.ru/authorize?response_type=token&amp;client_id=b86a8cd8f8f246c4bb64e9c4d91b55df"/><input
+                                                        name="fretpath" type="hidden" value=""/><input name="clean"
+                                                                                                       type="hidden"
+                                                                                                       value=""/><input
+                                                        name="service" type="hidden" value=""/><input name="origin"
+                                                                                                      type="hidden"
+                                                                                                      value=""/><input
+                                                        name="policy" type="hidden" value=""/><input name="is_pdd"
+                                                                                                     type="hidden"
+                                                                                                     value=""/><input
+                                                        name="csrf_token" type="hidden"
+                                                        value="44533c20d90c87bf06af7196bc67e574a3c8d732:1664550490100"/>
+                                                    <div class="AuthLoginInputToggle-wrapper">
+                                                        <div class="AuthLoginInputToggle-type">
+                                                            <button aria-pressed="true" autoComplete="off"
+                                                                    class="Button2 Button2_checked Button2_size_l Button2_view_default"
+                                                                    data-t="button:default"
+                                                                    data-type="login" type="button"><span
+                                                                    class="Button2-Text">Почта</span></button>
+                                                        </div>
+                                                        <div class="AuthLoginInputToggle-type">
+                                                            <button aria-pressed="false" autoComplete="off"
+                                                                    class="Button2 Button2_size_l Button2_view_clear"
+                                                                    data-t="button:clear"
+                                                                    data-type="phone" type="button"><span
+                                                                    class="Button2-Text">Телефон</span></button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="AuthLoginInputToggle-input">
+                                                        <div class="Field Field_view_rounded-corner"
+                                                             data-t="field:login">
+                                                            <div class="Field-label-wrapper"><label
+                                                                    class="Field-label Field-label_isVisuallyHidden"
+                                                                    data-t="field:label-login" for="passp-field-login">Введите
+                                                                ваш ID</label></div>
+                                                            <span class="Textinput Textinput_view_rounded-corner Textinput_size_l"><input
+                                                                    id="passp-field-login" aria-invalid="false" autoCapitalize="off"
+                                                                    autoComplete="username" autoCorrect="off"
+                                                                    class="Textinput-Control" data-t="field:input-login"
+                                                                    dir="ltr" name="login"
+                                                                    placeholder="Логин или email" type="text"
+                                                                    value=""/><span class="Textinput-Box"></span></span>
+                                                            <div id="field:link-login" class="Field-link"
+                                                                 data-t="field:link-login"><a class="Link Link_pseudo Link_view_default Link_weight_medium"
+                                                                                          data-t="link:default"
+                                                                                          href="/auth/restore/login?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&amp;noreturn=1&amp;origin=oauth"
+                                                                                          weight="medium">Не
+                                                                помню</a></div>
+                                                        </div>
+                                                    </div>
+                                                    <input id="hiddenPassword" aria-hidden="true"
+                                                           autoComplete="off" class="passp-hidden-password-field" name="hidden-password"
+                                                           tabindex="-1" type="password"/>
+                                                    <div class="passp-button passp-register-button"
+                                                         style="position:relative"><a aria-expanded="false"
+                                                                                      aria-haspopup="false"
+                                                                                      class="Button2 Button2_type_link Button2_size_l Button2_view_pseudo Button2_width_max"
+                                                                                      data-t="button:pseudo"
+                                                                                      href="https://passport.yandex.ru/auth/register/lite?origin=oauth&amp;retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&amp;process_uuid=89b83f3a-009d-4830-bb1f-97bd102a0b05"><span
+                                                            class="Button2-Text">Создать ID</span></a></div>
+                                                    <div class="passp-button passp-sign-in-button">
+                                                        <button id="passp:sign-in" aria-disabled="false"
+                                                                autoComplete="off"
+                                                                class="Button2 Button2_size_l Button2_view_action Button2_width_max Button2_type_submit"
+                                                                data-t="button:action:passp:sign-in" type="submit"><span
+                                                                class="Button2-Text">Войти</span></button>
+                                                    </div>
+                                                    <div class="passp-button passp-exp-register-button"
+                                                         style="position:relative"><a
+                                                            id="passp:exp-register"
+                                                            aria-expanded="false" aria-haspopup="false"
+                                                            class="Button2 Button2_type_link Button2_size_l Button2_view_pseudo Button2_width_max"
+                                                            data-t="button:pseudo:passp:exp-register"
+                                                            href="https://passport.yandex.ru/registration?origin=oauth&amp;retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&amp;process_uuid=89b83f3a-009d-4830-bb1f-97bd102a0b05"><span
+                                                            class="Button2-Text">Создать ID</span></a></div>
+                                                </form>
+                                            </div>
+                                            <div class="AuthSocialBlock"><h2 class="AuthSocialBlock-title">Войти с
+                                                помощью</h2>
+                                                <div class="AuthSocialBlock-providers">
+                                                    <button aria-label="ВКонтакте"
+                                                            class="AuthSocialBlock-provider AuthSocialBlock-provider_code_vk"
+                                                            data-t="provider:primary:vk" type="button"><span
+                                                            class="PasspIcon PasspIcon_vk PasspIcon_size_s"
+                                                            data-t="icon:vk"></span></button>
+                                                    <button aria-label="Facebook"
+                                                            class="AuthSocialBlock-provider AuthSocialBlock-provider_code_fb"
+                                                            data-t="provider:primary:fb" type="button"><span
+                                                            class="PasspIcon PasspIcon_fb PasspIcon_size_s"
+                                                            data-t="icon:fb"></span></button>
+                                                    <button aria-label="Google"
+                                                            class="AuthSocialBlock-provider AuthSocialBlock-provider_code_gg"
+                                                            data-t="provider:primary:gg" type="button"><span
+                                                            class="PasspIcon PasspIcon_gg PasspIcon_size_s"
+                                                            data-t="icon:gg"></span></button>
+                                                    <button aria-label="QR-код"
+                                                            class="AuthSocialBlock-provider AuthSocialBlock-provider_code_qr"
+                                                            data-t="provider:primary:qr" type="button"><span
+                                                            class="AuthSocialBlock-icon"></span><span
+                                                            class="AuthSocialBlock-name">QR-код</span></button>
+                                                    <button aria-label="Mail.ru"
+                                                            class="AuthSocialBlock-secondaryProvider AuthSocialBlock-secondaryProvider_hidden"
+                                                            data-t="provider:primary:mr" type="button"><span
+                                                            class="PasspIcon PasspIcon_mr PasspIcon_size_s"
+                                                            data-t="icon:mr"></span><span
+                                                            class="AuthSocialBlock-secondaryProviderName">Mail.ru</span>
+                                                    </button>
+                                                    <button aria-label="Одноклассники"
+                                                            class="AuthSocialBlock-secondaryProvider AuthSocialBlock-secondaryProvider_hidden"
+                                                            data-t="provider:primary:ok" type="button">
+                                                        <span class="PasspIcon PasspIcon_ok PasspIcon_size_s"
+                                                              data-t="icon:ok"></span><span
+                                                            class="AuthSocialBlock-secondaryProviderName">Одноклассники</span>
+                                                    </button>
+                                                    <button aria-label="Twitter"
+                                                            class="AuthSocialBlock-secondaryProvider AuthSocialBlock-secondaryProvider_hidden"
+                                                            data-t="provider:primary:tw" type="button"><span
+                                                            class="PasspIcon PasspIcon_tw PasspIcon_size_s"
+                                                            data-t="icon:tw"></span><span
+                                                            class="AuthSocialBlock-secondaryProviderName">Twitter</span>
+                                                    </button>
+                                                    <button aria-hidden="true" class="AuthSocialBlock-provider"
+                                                            data-t="provider:more" tabindex="-1" type="button">
+                                                        <span class="PasspIcon PasspIcon_dots PasspIcon_size_s PasspIcon_withHover"
+                                                              data-t="icon:dots"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="yaIdPromoText">Семейная оплата в Яндекс ID
+                            <a class=yaIdPromoText_link href=https://id.yandex.ru/yafamily?origin=yandexid_auth_form>Узнать
+                                больше</a></div>
+                    </div>
+                </div>
+            </div>
+            <footer class="AuthFooter">
+                <div class="AuthFooter-wrapper">
+                    <div class="AuthFooter-incognitoLink"><span class="AuthFooter-item"><a class="Link Link_view_default"
+                                                                                           data-t="link:default"
+                                                                                           href="https://yandex.ru/support/common/browsers-settings/incognito.html"
+                                                                                           target="_blank">Используйте режим инкогнито на чужом компьютере</a></span>
+                    </div>
+                    <div class="AuthFooter-mainBlock"><span class="AuthFooter-item"><a class="Link Link_view_default"
+                                                                                       data-t="link:default"
+                                                                                       href="https://yandex.ru/support/passport/"
+                                                                                       target="_blank">Справка и поддержка</a></span><span
+                            class="AuthFooter-item"><span class="AuthFooter-copyright">© 2001-2022, </span><a
+                            class="Link Link_view_default" data-t="link:default" href="https://ya.ru">Яндекс</a></span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+<script crossorigin="anonymous" src="//yastatic.net/react/16.8.4/react-with-dom-and-polyfills.min.js"></script>
+<img class="g-hidden"
+     src="https://ysa-static.passport.yandex.net/static/1/96eb29b255b84bfd7016c2420aa13870/d.png?ex=yes"/>
+<script id="storeScript" nonce="dd5b8868-af55-4152-8918-8648a8830c90" type="text/javascript">window.__REDUX_STORE__ = {
+    "registrationErrors": {"status": "ok", "code": "", "text": ""},
+    "signup": {
+        "mode": "simple",
+        "tmxSession": "5b500086-873e-4ece-858c-62f74f845745",
+        "config": {"registerWithFullPersonalInfoOrigins": ["full_personal_info", "full_personal_info_neo", "flowservice_sales_funnel", "market_touch_full_personal_info_checkout", "market_desktop_full_personal_info_checkout"]}
+    },
+    "tracks": {},
+    "settings": {
+        "formUrl": "\u002Fregistration",
+        "avatar": {
+            "host": "avatars.mds.yandex.net",
+            "pathname": "\u002Fget-yapic\u002F%uid%\u002Fislands-%size%",
+            "default_300": "https:\u002F\u002Favatars.mds.yandex.net\u002Fget-yapic\u002F0\u002F0-0\u002Fislands-300",
+            "avatar_300": "https:\u002F\u002Favatars.mds.yandex.net\u002Fget-yapic\u002F%avatar_id%\u002Fislands-300"
+        },
+        "staticPath": "https:\u002F\u002Fyastatic.net\u002Fs3\u002Fpassport-static\u002Fcore\u002Fv1.51.3",
+        "env": {"type": "production", "name": ""},
+        "help": {
+            "passport": "https:\u002F\u002Fyandex.%tld%\u002Fsupport\u002Fpassport\u002F",
+            "restore": "https:\u002F\u002Fyandex.%tld%\u002Fsupport\u002Fpassport\u002F",
+            "change_password": "https:\u002F\u002Fyandex.%tld%\u002Fsupport\u002Fpassport\u002Fsecurity\u002Fforce-password-change.xml",
+            "change_password_form": "https:\u002F\u002Fyandex.%tld%\u002Fsupport\u002Fpassport\u002Fsecurity\u002Fforce-password-change-form.xml",
+            "auth_challenges": "https:\u002F\u002Fyandex.%tld%\u002Fsupport\u002Fpassport\u002Fsecurity\u002Flogin-challenge-form.xml",
+            "phones": "https:\u002F\u002Fwww.yandex.%tld%\u002Fsupport\u002Fpassport\u002Fauthorization\u002Fphone.html",
+            "restore-semiauto": "https:\u002F\u002Fyandex.%tld%\u002Fsupport\u002Fpassport\u002Fsupport-restore.xml",
+            "kiddish": "https:\u002F\u002Fyandex.%tld%\u002Fsupport\u002Fkinopoisk\u002Fonline\u002Fkids-mode.html"
+        },
+        "intranet": false,
+        "language": "ru",
+        "lang": "ru",
+        "langlist": [{
+            "id": "ru",
+            "name": "Ru",
+            "link": "https:\u002F\u002Fyandex.ru\u002Fportal\u002Fset\u002Flang\u002F?sk=y84746be17932fc5a527561a730d3c650&retpath=https%3A%2F%2Fpassport.yandex.ru%2Fauth%3Fretpath%3Dhttps%253A%252F%252Foauth.yandex.ru%252Fauthorize%253Fresponse_type%253Dtoken%2526client_id%253Db86a8cd8f8f246c4bb64e9c4d91b55df%26noreturn%3D1%26origin%3Doauth&intl=ru"
+        }],
+        "dir": "ltr",
+        "tld": "ru",
+        "legalLinks": {
+            "rules": "https:\u002F\u002Fyandex.ru\u002Flegal\u002Frules\u002F",
+            "confidential": "https:\u002F\u002Fyandex.ru\u002Flegal\u002Fconfidential\u002F"
+        },
+        "host": "https:\u002F\u002Fpassport.yandex.ru",
+        "ua": {
+            "BrowserEngine": "Unknown",
+            "BrowserName": "Unknown",
+            "OSFamily": "Unknown",
+            "isBrowser": false,
+            "isMobile": false,
+            "isTouch": false
+        },
+        "isNoTabletTouch": false,
+        "regionId": 35,
+        "countryId": 225,
+        "version": "1.51.3",
+        "ysaPath": "https:\u002F\u002Fysa-static.passport.yandex.net",
+        "authCustomsVersion": "customs\u002Fv1.28.2",
+        "authCustomsStatic": "https:\u002F\u002Fyastatic.net\u002Fs3\u002Fpassport-auth-customs\u002F",
+        "useSystemTheme": true
+    },
+    "form": {
+        "type": "alternative",
+        "activeField": "",
+        "formErrors": [],
+        "captchaErrors": [],
+        "validation": {
+            "method": "phone",
+            "phoneConfirmationType": "sms",
+            "humanConfirmationDone": false,
+            "isValidPhoneForCall": false,
+            "magicConfirmationCode": "",
+            "callConfirmationTimer": null,
+            "isCallConfirmationInProcess": false,
+            "isForceCheckedConfirmationCode": false,
+            "confirmationCodeLength": 0
+        },
+        "states": {
+            "firstname": "",
+            "lastname": "",
+            "login": "",
+            "password": "",
+            "password_confirm": "",
+            "hint_question_id": "valid",
+            "hint_question": "valid",
+            "hint_question_custom": "valid",
+            "hint_answer": "",
+            "captcha": "",
+            "phone": "",
+            "phoneCode": "",
+            "phoneCodeStatus": "",
+            "gender": "valid",
+            "birthday": ""
+        },
+        "values": {
+            "firstname": "",
+            "lastname": "",
+            "surname": "",
+            "login": "",
+            "password": "",
+            "password_confirm": "",
+            "hint_question_id": "",
+            "hint_question": "",
+            "hint_question_custom": "",
+            "hint_answer": "",
+            "captcha": "",
+            "phone": "",
+            "phoneCode": "",
+            "publicId": "",
+            "gender": "m",
+            "birthday": ""
+        },
+        "errors": {
+            "active": "",
+            "firstname": {"code": "", "text": ""},
+            "lastname": {"code": "", "text": ""},
+            "login": {"code": "", "text": ""},
+            "password": {"code": "", "text": ""},
+            "password_confirm": {"code": "", "text": ""},
+            "hint_question_id": {"code": "", "text": ""},
+            "hint_question": {"code": "", "text": ""},
+            "hint_question_custom": {"code": "", "text": ""},
+            "hint_answer": {"code": "", "text": ""},
+            "captcha": {"code": "", "text": ""},
+            "phone": {"code": "", "text": ""},
+            "phoneCode": {"code": "", "text": ""},
+            "phoneCodeStatus": "",
+            "birthday": {"code": "", "text": ""}
+        },
+        "humanConfirmation": {"isCaptchaRequired": false, "questionList": [], "isFetching": false},
+        "isEulaCheckedByDefault": true,
+        "isEulaShowedInPopup": false,
+        "captchaRequired": false,
+        "canSwitchConfirmationMethod": false,
+        "isPhoneCallConfirmationAvailable": true,
+        "isForcePhoneCallConfirmation": true,
+        "isDiscardCallConfirmation": false,
+        "isPhoneCanBePrefilled": true,
+        "keepUnsubscribedValue": false
+    },
+    "auth": {
+        "process_uuid": "89b83f3a-009d-4830-bb1f-97bd102a0b05",
+        "isQRAuthEnabled": true,
+        "authorizedAccounts": [],
+        "form": {
+            "login": "",
+            "password": "",
+            "captcha_answer": "",
+            "isCanRegister": false,
+            "isForceOTP": false,
+            "registrationLogin": "",
+            "registrationType": "",
+            "registrationPhoneNumber": "",
+            "registrationCountry": ""
+        },
+        "loginError": "",
+        "passwordError": "",
+        "captchaError": "",
+        "magicError": "",
+        "inputLogins": null,
+        "authorizedAccountsDefaultUid": null,
+        "canAddMore": true,
+        "method": "password",
+        "needEmpty": false,
+        "passwordType": "password",
+        "processedAccount": null,
+        "submitCounter": 0,
+        "suggestedAccounts": [],
+        "unitedAccounts": {},
+        "isRestoreLoginTextExp": false,
+        "typeImage2FA": "image",
+        "loginFieldType": "login",
+        "isAuthForChildishReg": false,
+        "childishPlugPage": "contactSupport",
+        "childishRegEntry": "auth",
+        "isRegisterWithSuggestToRestoreByPhoneInDaHouse": false,
+        "isDefaultTextsExp": false,
+        "isWelcomePageTitleExp": false
+    },
+    "common": {
+        "backpath": "https:\u002F\u002Foauth.yandex.ru\u002Fauthorize?response_type=token&client_id=b86a8cd8f8f246c4bb64e9c4d91b55df",
+        "csrf": "44533c20d90c87bf06af7196bc67e574a3c8d732:1664550490100",
+        "currentUrl": "https:\u002F\u002Fpassport.yandex.ru\u002Fauth?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "experiments": {
+            "flags": ["passport-new-navigation-for-staff-exp", "use-new-suggest-by-phone", "domik-neophonish-exp-enable", "auth-toggle-login-phone-exp", "social-provider-fb-exp", "show-cards-list-alert", "passport-gdpr-enabled", "chaas-3ds-one-step-exp", "passport-bonuscards-exp", "profile-family-pay-drive-exp", "profile-family-pay-travel-exp", "profile-family-pay-games-exp", "profile-family-invite-new", "profile-family-pay-3ds-exp", "profile-family-pay-exp", "chaas-one-step-exp", "customs-exp-kinopoisk", "show_landing_link_exp", "id-layout-plus-balance-exp", "support-window-enable", "id-layout-exp", "password-pwned-exp", "id-bnpl-alert-exp", "passport-security-tips-exp", "passport-security-alert-exp", "child-profile-reg-on", "order_history_on", "passport-subs-praktikum-on", "passport-family-smartoffer-on", "plus-podpiska-eball-exp", "plus-podpiska-downgrade-toggle", "plus-coil-enable", "plus-winback-restore", "sms-auth-on", "domik-new_reg-exp3", "plus-redesign-enable", "plus-family-uz-enable", "show-subscriptions", "domik-challenge-am-exp", "profile-data-lavka-exp", "social-force-upgrade", "chaas-3ds-new-payment-form", "exp-registration-no-phone-link-no-origin", "profile-family-alert-first-case", "profile-family-alert", "profile-phones-v2-exp", "customs-exp-registration-no-phone-link-for-direct", "customs-exp-registration-no-phone-link-for-mail", "passport-authreg-fingerprint-exp", "passport-registration-fingerprint-exp", "passport-greed-exp", "family-promo-exp", "slider-confirmation-design", "auth_params_exp", "auth-check-data-exp", "card_deletion_alert_exp", "big_input_exp", "code-format-by-3-dash", "settings-nopassword-on-new", "reg_wave_exp", "passport-subs-eula-check-on", "oauth-authorize-redesign-exp", "passport-new-logo-on", "profile-verification-enable", "publicid-profile-on", "PASSP-27563-plus-unsubscribe-new", "domik-neophonish-exp-enable", "domik-phone-autostart-on", "regwithsocialbtn-exp2", "settings-nopassword-on", "qr_promo_2", "PLUS-93-restore-subscription-exp", "passp-20231-forced-zvonok", "qr_exp", "profilepublic-ava-exp", "restorelogin_call_dictcall", "domik-new-design-soccolor", "domik-new-design-exp", "domik-new-design-logo", "rounded-input-exp", "passport-new-lk-exp", "passport-app-fingerprint-disable", "profile-data-taxi-exp", "profile-family-pay-tanker-exp", "desktop-test-flag", "passport-new-navigation-exp", "passport-new-navigation-exp-toggle", "force-yaru-sso", "yandex-to-ya-exp", "add-yakey-account", "turn_sso_on=1", "new_flow_second=1", "big_account_list=1", "turn_superlite_reg_on=1", "lite_reg_query_name=1", "lite_reg_query_password=1", "turn_auth_by_sms_code_on=1", "turn_neophonish_reg_on=1", "scopes_screen_new_design=1", "web_login_on=1", "web_am_on=1", "new-auth-verify-design", "customs-exp-registration-no-phone-link-on-morda", "oldregistration-nophone", "oauth-authorize-controls-top-exp", "PASSP-22594_exp", "PLUS-215-etalon", "passport-security-v2-exp"],
+            "flagsString": "passport-new-navigation-for-staff-exp,use-new-suggest-by-phone,domik-neophonish-exp-enable,auth-toggle-login-phone-exp,social-provider-fb-exp,show-cards-list-alert,passport-gdpr-enabled,chaas-3ds-one-step-exp,passport-bonuscards-exp,profile-family-pay-drive-exp,profile-family-pay-travel-exp,profile-family-pay-games-exp,profile-family-invite-new,profile-family-pay-3ds-exp,profile-family-pay-exp,chaas-one-step-exp,customs-exp-kinopoisk,show_landing_link_exp,id-layout-plus-balance-exp,support-window-enable,id-layout-exp,password-pwned-exp,id-bnpl-alert-exp,passport-security-tips-exp,passport-security-alert-exp,child-profile-reg-on,order_history_on,passport-subs-praktikum-on,passport-family-smartoffer-on,plus-podpiska-eball-exp,plus-podpiska-downgrade-toggle,plus-coil-enable,plus-winback-restore,sms-auth-on,domik-new_reg-exp3,plus-redesign-enable,plus-family-uz-enable,show-subscriptions,domik-challenge-am-exp,profile-data-lavka-exp,social-force-upgrade,chaas-3ds-new-payment-form,exp-registration-no-phone-link-no-origin,profile-family-alert-first-case,profile-family-alert,profile-phones-v2-exp,customs-exp-registration-no-phone-link-for-direct,customs-exp-registration-no-phone-link-for-mail,passport-authreg-fingerprint-exp,passport-registration-fingerprint-exp,passport-greed-exp,family-promo-exp,slider-confirmation-design,auth_params_exp,auth-check-data-exp,card_deletion_alert_exp,big_input_exp,code-format-by-3-dash,settings-nopassword-on-new,reg_wave_exp,passport-subs-eula-check-on,oauth-authorize-redesign-exp,passport-new-logo-on,profile-verification-enable,publicid-profile-on,PASSP-27563-plus-unsubscribe-new,domik-neophonish-exp-enable,domik-phone-autostart-on,regwithsocialbtn-exp2,settings-nopassword-on,qr_promo_2,PLUS-93-restore-subscription-exp,passp-20231-forced-zvonok,qr_exp,profilepublic-ava-exp,restorelogin_call_dictcall,domik-new-design-soccolor,domik-new-design-exp,domik-new-design-logo,rounded-input-exp,passport-new-lk-exp,passport-app-fingerprint-disable,profile-data-taxi-exp,profile-family-pay-tanker-exp,desktop-test-flag,passport-new-navigation-exp,passport-new-navigation-exp-toggle,force-yaru-sso,yandex-to-ya-exp,add-yakey-account,turn_sso_on=1,new_flow_second=1,big_account_list=1,turn_superlite_reg_on=1,lite_reg_query_name=1,lite_reg_query_password=1,turn_auth_by_sms_code_on=1,turn_neophonish_reg_on=1,scopes_screen_new_design=1,web_login_on=1,web_am_on=1,new-auth-verify-design,customs-exp-registration-no-phone-link-on-morda,oldregistration-nophone,oauth-authorize-controls-top-exp,PASSP-22594_exp,PLUS-215-etalon,passport-security-v2-exp",
+            "boxes": ["637803,0,-1", "637802,0,-1", "637801,0,-1", "637799,0,-1", "637798,0,-1", "637797,0,-1", "637794,0,-1", "637792,0,-1", "637790,0,-1", "596989,0,61", "549995,0,13", "225725,0,96", "307868,0,24", "127242,0,44", "118435,0,28", "252173,0,49", "639092,0,25"],
+            "encodedBoxes": "JnGLA00KgktAdIOLOewJG0c_QXQ42ndPWV1h2RRJ7hqGsP-KAAgE7DthKZmhzLH7imEMci7U32XDqmmSGjbRUzvn4PXej_6i0T_V-mWmauLycLdPCNRyNJbpyBj7mfkEQVuDCznlG5GYD4BBB-qDpp7LKtzc8joZ4XuM8fJ-W7KYEpUI3iq-P38HJE0E6tB1AOBY7cxbzwRi0kNx27FxISWxKGYFzLATX2tCTyJR-vapKxtyak8vSOX38nzrAOx3Z5xq518SQKZrnfpyJ2FTlg"
+        },
+        "retpath": "https:\u002F\u002Foauth.yandex.ru\u002Fauthorize?response_type=token&client_id=b86a8cd8f8f246c4bb64e9c4d91b55df",
+        "magic_csrf_token": null,
+        "noreturn": true,
+        "yu": "611396231664550490",
+        "origin": "oauth",
+        "captchaScaleFactor": 3,
+        "isWebView": false,
+        "isWebViewWithSocialAuth": false,
+        "dev": false,
+        "neoPhonishPrefix": "nphne-",
+        "backPane": null,
+        "loginStatusRetpath": "https:\u002F\u002Fpassport.yandex.ru\u002Fauth\u002Flogin-status_v2.html",
+        "embeddedauth_url": "\u002F\u002Fpassport.yandex.ru\u002Fpassport?mode=embeddedauth",
+        "embeddedAuthUrlObjs": {
+            "protocol": null,
+            "slashes": null,
+            "auth": null,
+            "host": null,
+            "port": null,
+            "hostname": null,
+            "hash": null,
+            "search": "?mode=embeddedauth",
+            "query": {"mode": "embeddedauth"},
+            "pathname": "\u002F\u002Fpassport.yandex.ru\u002Fpassport",
+            "path": "\u002F\u002Fpassport.yandex.ru\u002Fpassport?mode=embeddedauth",
+            "href": "\u002F\u002Fpassport.yandex.ru\u002Fpassport?mode=embeddedauth"
+        },
+        "addUserUrl": "\u002Fauth\u002Fadd?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "addUserFullUrl": "https:\u002F\u002Fpassport.yandex.ru\u002Fauth\u002Fadd?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "authGlogoutConfirmUrl": "\u002Fauth\u002Flogout-confirm?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "preRegCompleteUrl": "\u002Fauth\u002Fprecomplete?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "regCompleteUrl": "\u002Fauth\u002Fcomplete?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "welcomeUrl": "\u002Fauth\u002Fwelcome?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "askAvatarUrl": "\u002Fauth\u002Favatar?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "askPhoneUrl": "\u002Fauth\u002Fphone?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "keyAlreadyEnabledUrl": "\u002Fauth\u002Fkey-already-enabled?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "phoneConfirmationUrl": "\u002Fauth\u002Fphone\u002Fconfirm?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "phoneConfirmUrl": "\u002Fauth\u002Fphoneconfirm?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "askSocialUrl": "\u002Fauth\u002Fsocial?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "askEmailUrl": "\u002Fauth\u002Femail?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "editUrl": "\u002Fauth\u002Flist?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth&mode=edit",
+        "addUserWithLoginUrl": "https:\u002F\u002Fpassport.yandex.ru\u002Fauth\u002Fadd?origin=oauth&retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&login=login&process_uuid=89b83f3a-009d-4830-bb1f-97bd102a0b05",
+        "challengeUrl": "\u002Fauth\u002Fchallenge?origin=oauth&retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&track_id=",
+        "restoreLoginUrl": "\u002Fauth\u002Frestore\u002Flogin?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "restoreLoginProcessUrl": "\u002Fauth\u002Frestore\u002Flogin\u002Fprocess?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "restoreLoginResultUrl": "\u002Fauth\u002Frestore\u002Flogin\u002Fresult?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "magicUrl": "\u002Fauth\u002Fmagic?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "socialSuggest": "\u002Fauth\u002Fsocial-suggest?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "restorePasswordUrl": "\u002Fauth\u002Frestore\u002Fpassword?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "restorePasswordCaptchaUrl": "\u002Fauth\u002Frestore\u002Fpassword\u002Fcaptcha?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "authLiteRegisterUrl": "\u002Fauth\u002Fregister\u002Flite?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "authLitePasswordUrl": "\u002Fauth\u002Fregister\u002Flite\u002Fform?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "authLiteNameUrl": "\u002Fauth\u002Fregister\u002Flite\u002Fname?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "authLiteEulaUrl": "\u002Fauth\u002Fregister\u002Flite\u002Feula?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "authUrl": "https:\u002F\u002Fpassport.yandex.ru\u002Fauth?origin=oauth&retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df",
+        "changePasswordUrl": "\u002Fauth\u002Fchangepassword?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "changeDefaultUrlObj": {
+            "protocol": null,
+            "slashes": null,
+            "auth": null,
+            "host": null,
+            "port": null,
+            "hostname": null,
+            "hash": null,
+            "search": null,
+            "query": {"action": "change_default", "yu": "611396231664550490"},
+            "pathname": "\u002F\u002Fpassport.yandex.ru\u002Fpassport",
+            "path": "\u002F\u002Fpassport.yandex.ru\u002Fpassport?mode=embeddedauth",
+            "href": "\u002F\u002Fpassport.yandex.ru\u002Fpassport?mode=embeddedauth"
+        },
+        "multilogoutUrlObj": {
+            "protocol": null,
+            "slashes": null,
+            "auth": null,
+            "host": null,
+            "port": null,
+            "hostname": null,
+            "hash": null,
+            "search": null,
+            "query": {"action": "logout", "yu": "611396231664550490"},
+            "pathname": "\u002F\u002Fpassport.yandex.ru\u002Fpassport",
+            "path": "\u002F\u002Fpassport.yandex.ru\u002Fpassport?mode=embeddedauth",
+            "href": "\u002F\u002Fpassport.yandex.ru\u002Fpassport?mode=embeddedauth"
+        },
+        "profile_url": "https:\u002F\u002Fpassport.yandex.ru\u002Fprofile?origin=oauth&retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df",
+        "yandex_url": "https:\u002F\u002Fya.ru",
+        "yandex_support_url": "https:\u002F\u002Fyandex.ru\u002Fsupport\u002Fsearch\u002Ftroubleshooting\u002Fwish.html",
+        "restoration_url": "https:\u002F\u002Fpassport.yandex.ru\u002Frestoration?origin=oauth&retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&login=login&process_uuid=89b83f3a-009d-4830-bb1f-97bd102a0b05",
+        "restoration_login_url": "https:\u002F\u002Fpassport.yandex.ru\u002Frestoration\u002Flogin?origin=oauth&retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&process_uuid=89b83f3a-009d-4830-bb1f-97bd102a0b05",
+        "registration_url": "https:\u002F\u002Fpassport.yandex.ru\u002Fregistration?origin=oauth&retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&process_uuid=89b83f3a-009d-4830-bb1f-97bd102a0b05",
+        "lite_registration_url": "https:\u002F\u002Fpassport.yandex.ru\u002Fregistration\u002Flite?origin=oauth&retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&process_uuid=89b83f3a-009d-4830-bb1f-97bd102a0b05",
+        "registration_url_with_params": "https:\u002F\u002Fpassport.yandex.ru\u002Fregistration?origin=oauth&retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&login=login&phone_number=phone_number&country=country&skipLite=1&process_uuid=89b83f3a-009d-4830-bb1f-97bd102a0b05",
+        "lite_registration_url_with_params": "https:\u002F\u002Fpassport.yandex.ru\u002Fregistration\u002Flite?origin=oauth&retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&login=login&phone_number=phone_number&country=country&process_uuid=89b83f3a-009d-4830-bb1f-97bd102a0b05",
+        "liteRegisterUrl": "https:\u002F\u002Fpassport.yandex.ru\u002Fauth\u002Fregister\u002Flite?origin=oauth&retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&login=login&phone_number=phone_number&country=country&process_uuid=89b83f3a-009d-4830-bb1f-97bd102a0b05",
+        "preRegisterUrl": "\u002Fauth\u002Fpreregister?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "profileSecurityWithCustoms": "\u002Fprofile\u002Fsecurity?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth&forced=1",
+        "profilePhonesUrl": "\u002Fprofile\u002Fphones?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "welcomePageUrl": "https:\u002F\u002Fpassport.yandex.ru\u002Fauth\u002Fwelcomepage?origin=oauth&retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df",
+        "authForChildishRegUrl": "\u002Fauth?retpath=https%3A%2F%2Fpassport.yandex.ru%2Fauth%2Fchild%2Freg%3Fretpath%3Dhttps%253A%252F%252Foauth.yandex.ru%252Fauthorize%253Fresponse_type%253Dtoken%2526client_id%253Db86a8cd8f8f246c4bb64e9c4d91b55df%26noreturn%3D1%26origin%3Doauth%26childishRegEntry%3Dauth&noreturn=1&origin=oauth&backpath=https%3A%2F%2Fpassport.yandex.ru%2Fauth%2Fchild%2Flanding%3Fretpath%3Dhttps%253A%252F%252Foauth.yandex.ru%252Fauthorize%253Fresponse_type%253Dtoken%2526client_id%253Db86a8cd8f8f246c4bb64e9c4d91b55df%26noreturn%3D1%26origin%3Doauth%26childishRegEntry%3Dauth&authForChildishReg=1",
+        "childishRegUrl": "\u002Fauth\u002Fchild\u002Freg?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth&childishRegEntry=auth",
+        "childishLandingUrl": "\u002Fauth\u002Fchild\u002Flanding?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth&childishRegEntry=auth",
+        "childishUnable2AddUrl": "\u002Fauth\u002Fchild\u002Fplug?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&page=unable2Add&noreturn=1",
+        "childishUnable2CreateUrl": "\u002Fauth\u002Fchild\u002Fplug?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&page=unable2Create&noreturn=1",
+        "childishUnable2RecoverUrl": "\u002Fauth\u002Fchild\u002Fplug?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&page=unable2Recover&noreturn=1",
+        "childishContactSupportUrl": "\u002Fauth\u002Fchild\u002Fplug?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&page=contactSupport&noreturn=1",
+        "idFamilyUrl": "https:\u002F\u002Fpassport.yandex.ru\u002Ffamily?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth",
+        "idFamilyMemberWithDialogUrl": "\u002Ffamily?dialog=family-member",
+        "idFamilyMemberWithRetpathUrl": "\u002Ffamily\u002Fmember?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df",
+        "passportAPI": "https:\u002F\u002Fapi.passport.yandex.ru",
+        "bgNumber": 1,
+        "pane": "\u002Fauth"
+    },
+    "changePassword": {
+        "step": "text",
+        "checkDataUrl": "https:\u002F\u002Fpassport.yandex.ru\u002Fauth\u002Fcheck-data?retpath=https%3A%2F%2Foauth.yandex.ru%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3Db86a8cd8f8f246c4bb64e9c4d91b55df&noreturn=1&origin=oauth"
+    },
+    "social": {
+        "providers": [{
+            "id": 1,
+            "enabled": true,
+            "primary": true,
+            "data": {
+                "id": 1,
+                "code": "vk",
+                "name": "vkontakte",
+                "display_name": {
+                    "default": "ВКонтакте",
+                    "ru": "ВКонтакте",
+                    "uk": "ВКонтакті",
+                    "be": "ВКонтакте",
+                    "en": "VKontakte",
+                    "tr": "VKontakte"
+                }
+            }
+        }, {
+            "id": 6,
+            "enabled": true,
+            "primary": true,
+            "data": {
+                "id": 6,
+                "code": "ok",
+                "name": "odnoklassniki",
+                "display_name": {
+                    "default": "Одноклассники",
+                    "ru": "Одноклассники",
+                    "uk": "Однокласники",
+                    "en": "Odnoklassniki",
+                    "tr": "Odnoklasniki"
+                }
+            }
+        }, {
+            "id": 3,
+            "enabled": true,
+            "primary": false,
+            "data": {"id": 3, "code": "tw", "name": "twitter", "display_name": {"default": "Twitter"}}
+        }, {
+            "id": 4,
+            "enabled": true,
+            "primary": false,
+            "data": {"id": 4, "code": "mr", "name": "mailru", "display_name": {"default": "Mail.ru"}}
+        }, {
+            "id": 5,
+            "enabled": true,
+            "primary": false,
+            "data": {"id": 5, "code": "gg", "name": "google", "display_name": {"default": "Google"}}
+        }, {
+            "id": 2,
+            "enabled": true,
+            "primary": true,
+            "data": {"id": 2, "code": "fb", "name": "facebook", "display_name": {"default": "Facebook"}}
+        }],
+        "brokerPath": "https:\u002F\u002Fsocial.yandex.%tld%\u002Fbroker2\u002Fstart",
+        "brokerParams": {
+            "startUrl": "\u002Fauth\u002Fsocial\u002Fstart",
+            "retpath": "\u002Fauth\u002Fi-social__closer.html",
+            "consumer": "passport",
+            "popupName": "passport_social",
+            "display": "popup",
+            "place": "fragment"
+        }
+    },
+    "captcha": {
+        "loading": false,
+        "loadingAudio": false,
+        "playing": false,
+        "type": "text",
+        "key": null,
+        "imageUrl": null,
+        "introSound": null,
+        "captchaSound": null
+    },
+    "metrics": {
+        "header": "Авторизация",
+        "experiments": "JnGLA00KgktAdIOLOewJG0c_QXQ42ndPWV1h2RRJ7hqGsP-KAAgE7DthKZmhzLH7imEMci7U32XDqmmSGjbRUzvn4PXej_6i0T_V-mWmauLycLdPCNRyNJbpyBj7mfkEQVuDCznlG5GYD4BBB-qDpp7LKtzc8joZ4XuM8fJ-W7KYEpUI3iq-P38HJE0E6tB1AOBY7cxbzwRi0kNx27FxISWxKGYFzLATX2tCTyJR-vapKxtyak8vSOX38nzrAOx3Z5xq518SQKZrnfpyJ2FTlg",
+        "counterId": "784657"
+    },
+    "monitoring": {"page": "auth.v2"},
+    "mobileMenu": {"isShowMobileMenu": false, "mobileMenuType": null, "processedAccountUid": null},
+    "pagePopup": {"isShowPagePopup": false, "pagePopupType": null},
+    "customs": {"bgNumber": 1, "hideRegistration": {"noPhoneLink": true}},
+    "mailAuth": {"isEnabled": false, "isUpdatedAuthLetterStatus": false},
+    "messengerAuth": {},
+    "restoreLogin": {"confirmMethod": "by_call", "isCallExp": true},
+    "experimentsList": {}
+}</script>
+<script nonce="dd5b8868-af55-4152-8918-8648a8830c90" type="text/javascript">
+    if (typeof window !== 'undefined' &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        var bodyClassName = document.body.getAttribute('class');
+
+        document.body.setAttribute(
+            'class', bodyClassName.replace('Theme_root_default', 'Theme Theme_root_dark Theme_color_dark'
+            ));
+    }
+</script>
+<script id="__LOADABLE_REQUIRED_CHUNKS__" crossorigin="anonymous" type="application/json">[]</script>
+<script id="__LOADABLE_REQUIRED_CHUNKS___ext" crossorigin="anonymous" type="application/json">{
+    "namedChunks": []
+}</script>
+<script async crossorigin="anonymous"
+        data-chunk="react.authv2"
+        src="https://yastatic.net/s3/passport-static/core/v1.51.3/js/react.authv2.lego.ru.js"></script>
+<script async crossorigin="anonymous"
+        data-chunk="react.authv2"
+        src="https://yastatic.net/s3/passport-static/core/v1.51.3/js/react.authv2.vendors.ru.js"></script>
+<script async crossorigin="anonymous"
+        data-chunk="react.authv2"
+        src="https://yastatic.net/s3/passport-static/core/v1.51.3/js/react.authv2.react.ru.js"></script>
+<link as="style" crossorigin="anonymous" data-chunk="react.authv2"
+      href="https://yastatic.net/s3/passport-static/core/v1.51.3/js/../css/react.authv2.cij.css"
+      rel="preload">
+<link as="script" crossorigin="anonymous" data-chunk="react.authv2"
+      href="https://yastatic.net/s3/passport-static/core/v1.51.3/js/react.authv2.lego.ru.js" rel="preload">
+<link as="script" crossorigin="anonymous" data-chunk="react.authv2"
+      href="https://yastatic.net/s3/passport-static/core/v1.51.3/js/react.authv2.vendors.ru.js" rel="preload">
+<link as="script" crossorigin="anonymous" data-chunk="react.authv2"
+      href="https://yastatic.net/s3/passport-static/core/v1.51.3/js/react.authv2.react.ru.js" rel="preload">
+<link crossorigin="anonymous" data-chunk="react.authv2"
+      href="https://yastatic.net/s3/passport-static/core/v1.51.3/js/../css/react.authv2.cij.css"
+      rel="stylesheet">
+<script nonce="dd5b8868-af55-4152-8918-8648a8830c90">typeof Ya !== 'undefined' && Ya.Rum && Ya.Rum.sendResTiming('2095', '__LOADABLE_REQUIRED_CHUNKS__');
+typeof Ya !== 'undefined' && Ya.Rum && Ya.Rum.sendResTiming('2095', '__LOADABLE_REQUIRED_CHUNKS___ext');
+typeof Ya !== 'undefined' && Ya.Rum && Ya.Rum.sendResTiming('3071', 'https://yastatic.net/s3/passport-static/core/v1.51.3/js/react.authv2.lego.ru.js');
+typeof Ya !== 'undefined' && Ya.Rum && Ya.Rum.sendResTiming('3071', 'https://yastatic.net/s3/passport-static/core/v1.51.3/js/react.authv2.vendors.ru.js');
+typeof Ya !== 'undefined' && Ya.Rum && Ya.Rum.sendResTiming('2095', 'https://yastatic.net/s3/passport-static/core/v1.51.3/js/react.authv2.react.ru.js');
+typeof Ya !== 'undefined' && Ya.Rum && Ya.Rum.sendResTiming('2447', 'https://yastatic.net/s3/passport-static/core/v1.51.3/js/../css/react.authv2.cij.css');</script>
+</body>
+</html>
