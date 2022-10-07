@@ -2,38 +2,33 @@
   <v-container>
     <v-row>
       <Kinsman
-          v-for="(kinsman, key) in kinsmans"
+          v-for="(kinsman, key) in mapKinsmans()"
           :kinsman="kinsman"
           :key="key"
       />
     </v-row>
+    <KinsmanDialog/>
   </v-container>
 </template>
 
 <script>
-import Kinsman from "../components/Kinsman";
-import {API_URL} from "../main";
+import Kinsman from "../components/kinsmans/Kinsman";
+import {mapActions, mapGetters} from "vuex";
+import KinsmanDialog from "../components/kinsmans/KinsmanDialog";
 
 export default {
   name: "KinsmansPage",
   components: {
-    Kinsman
+    Kinsman, KinsmanDialog
   },
-  data: () => ({
-    kinsmans: []
-  }),
   mounted() {
      this.fetchKinsmans();
   },
   methods: {
-    async fetchKinsmans() {
-      try {
-        const response = await this.axios.get(API_URL + 'kinsmans')
-        console.log(response);
-        this.kinsmans = response.data.data
-      } catch (e) {
-        console.log(e)
-      }
+    ...mapActions(['fetchKinsmans']),
+    ...mapGetters(['getAllKinsmans']),
+    mapKinsmans() {
+      return this.getAllKinsmans();
     }
   }
 }
