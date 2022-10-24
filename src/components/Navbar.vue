@@ -14,6 +14,12 @@
       <v-btn outlined class="ml-3">
         <router-link to="/kinsman">Kinsmans</router-link>
       </v-btn>
+      <v-btn outlined class="ml-3">
+        <router-link to="/palette">Palette</router-link>
+      </v-btn>
+      <v-btn>
+        <router-link to="/poker">Poker</router-link>
+      </v-btn>
 
     </v-app-bar>
   </v-container>

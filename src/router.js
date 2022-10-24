@@ -3,7 +3,8 @@ import VueRouter from "vue-router";
 import MainPage from './pages/MainPage';
 import PhotosPage from './pages/PhotosPage';
 import KinsmansPage from "./pages/KinsmansPage";
-import YaTokenPage from "./components/yandex/YaTokenPage";
+import Palette from "./components/Palette";
+import Poker from "./components/Poker";
 Vue.use(VueRouter);
 
 const routes = [
@@ -20,9 +21,13 @@ const routes = [
         component: KinsmansPage,
     },
     {
-        path: '/ya_token',
-        component: YaTokenPage,
+        path: '/palette',
+        component: Palette,
     },
+    {
+        path: "/poker",
+        component: Poker
+    }
 ];
 
 export default new VueRouter({
