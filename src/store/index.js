@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import photoModule from "./photoModule";
-import kinsmanModule from "./kinsmanModule";
-import dialogModule from "./dialogModule";
+import photoModule from "./PhotoModule";
+import kinsmanModule from "./KinsmanModule";
+import dialogModule from "./DialogModule";
 
 Vue.use(Vuex);
 
